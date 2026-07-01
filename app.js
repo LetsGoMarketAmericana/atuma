@@ -72,6 +72,7 @@ let modeIconImg = null;
 (function loadModeIcon() {
   const img = new Image();
   img.onload = () => { modeIconImg = img; render(); };
+  img.crossOrigin = 'anonymous';
   img.src = 'public/emotes/na%20frente%20de%20modo.webp';
 })();
 
@@ -80,6 +81,7 @@ let discordIconImg = null;
 (function loadDiscordIcon() {
   const img = new Image();
   img.onload = () => { discordIconImg = img; render(); };
+  img.crossOrigin = 'anonymous';
   img.src = 'public/discord.webp';
 })();
 
@@ -145,6 +147,7 @@ function buildMapGrid() {
     sq.className = 'map-ic-sq';
 
     const im = document.createElement('img');
+    im.crossOrigin = 'anonymous';
     im.src = `public/backgrounds/${map.bg}.jpg`;
     im.alt = map.name;
 
@@ -248,6 +251,7 @@ function loadPresetImg(file) {
     const img = new Image();
     img.onload = () => { presetImages[file] = img; resolve(img); };
     img.onerror = () => resolve(null);
+    img.crossOrigin = 'anonymous';
     img.src = `public/emotes/${encodeURIComponent(file)}`;
   });
 }
@@ -275,6 +279,7 @@ function buildEmoteGroups() {
       sq.className = 'preset-sq';
 
       const im = document.createElement('img');
+      im.crossOrigin = 'anonymous';
       im.src = `public/emotes/${encodeURIComponent(file)}`;
       im.alt = EMOTE_LABELS[file] || file;
 
@@ -359,7 +364,7 @@ function addBgThumb(bgObj) {
   const item = document.createElement('div');
   item.className = 'bg-item' + (S.bgId === bgObj.id ? ' sel' : '');
   item.dataset.id = bgObj.id;
-  const im = document.createElement('img'); im.src = bgObj.url; im.alt = '';
+  const im = document.createElement('img'); im.crossOrigin = 'anonymous'; im.src = bgObj.url; im.alt = '';
   const lb = document.createElement('div'); lb.className = 'bg-lbl'; lb.textContent = bgObj.name;
   item.appendChild(im); item.appendChild(lb);
   item.addEventListener('click', () => selectBg(bgObj.id));
@@ -383,6 +388,7 @@ function addBgThumb(bgObj) {
       render();
     };
     img.onerror = () => { S.bgs.push(obj); addBgThumb(obj); };
+    img.crossOrigin = 'anonymous';
     img.src = url;
   });
 })();
