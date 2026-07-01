@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stumble Guys – Gerador de Capa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ── PAINEL ESQUERDO ── -->
+    <div class="panel">
+      <div class="tabs">
+        <button class="tab active" data-tab="fotos">
+          <span class="tab-icon"><img src="public/tab-fotos.webp" alt="Capa" /></span><span>Capa</span>
+        </button>
+        <button class="tab" data-tab="detalhes">
+          <span class="tab-icon"><img src="public/tab-detalhes.webp" alt="Detalhes" /></span><span>Detalhes</span>
+        </button>
+        <button class="tab" data-tab="emotes">
+          <span class="tab-icon"><img src="public/tab-emotes.webp" alt="Emotes" /></span><span>Emotes</span>
+        </button>
+        <button class="tab" data-tab="backgrounds">
+          <span class="tab-icon"><img src="public/tab-backgrounds.webp" alt="Backgrounds" /></span><span>Backgrounds</span>
+        </button>
+      </div>
+
+      <!-- TAB FOTOS -->
+      <div class="tab-content active" id="tab-fotos">
+        <div class="section-label">TÍTULO</div>
+        <div class="field-label">NOME DO TÍTULO DO TORNEIO</div>
+        <input type="text" id="inp-name" placeholder="Ex: Atuma" />
+
+        <div class="field-label mt">FOTO DO DONO DO TORNEIO</div>
+        <div class="upload-box" id="photo-area">
+          <div class="upload-ph" id="photo-ph">
+            <span>📷</span><span>PNG, JPG — aparece no centro da capa</span>
+          </div>
+          <img id="photo-thumb" class="thumb hidden" alt="" />
+          <div id="photo-fname" class="fname hidden"></div>
+          <input type="file" id="photo-inp" accept="image/*" hidden />
+        </div>
+        <button class="rm-btn hidden" id="rm-photo">✕ Remover foto</button>
+
+        <div class="field-label mt">COR DO NOME DO TORNEIO</div>
+        <div class="toggle-row">
+          <button class="tog active" id="btn-solid">Parado</button>
+          <button class="tog" id="btn-grad">Gradiente</button>
+        </div>
+        <div class="color-row">
+          <input type="color" id="color1" value="#ffffff" />
+          <input type="color" id="color2" value="#ffff00" class="hidden" />
+        </div>
+      </div>
+
+      <!-- TAB DETALHES -->
+      <div class="tab-content" id="tab-detalhes">
+        <div class="section-label">DETALHES</div>
+
+        <div class="field-label">MAPA</div>
+        <div class="map-icons-grid" id="map-icons-grid"></div>
+
+        <div class="field-label mt">FORMATO</div>
+        <div class="pills" id="pills">
+          <button class="pill active" data-v="1v1">1v1</button>
+          <button class="pill" data-v="2v2">2v2</button>
+          <button class="pill" data-v="3v3">3v3</button>
+          <button class="pill" data-v="4v4">4v4</button>
+          <button class="pill" data-v="5v5">5v5</button>
+          <button class="pill" data-v="6v6">6v6</button>
+          <button class="pill" data-v="7v7">7v7</button>
+          <button class="pill" data-v="Solo">Solo</button>
+        </div>
+
+        <div class="field-label mt">DISCORD / TAG</div>
+        <input type="text" id="inp-discord" placeholder="Ex: discord.gg/sgprix" />
+      </div>
+
+      <!-- TAB EMOTES -->
+      <div class="tab-content" id="tab-emotes">
+        <div class="section-label">EMOTES</div>
+        <p class="hint">Clique para adicionar/remover da capa. Emotes ficam no canto inferior esquerdo.</p>
+
+        <!-- Grupos com variações lado a lado -->
+        <div class="emote-groups" id="emote-groups"></div>
+
+        <div class="field-label mt">EMOTES NA CAPA</div>
+        <div class="emotes-grid" id="emotes-grid"></div>
+      </div>
+
+      <!-- TAB BACKGROUNDS -->
+      <div class="tab-content" id="tab-backgrounds">
+        <div class="section-label">BACKGROUNDS</div>
+
+        <div class="field-label">DESFOQUE DO FUNDO</div>
+        <div class="blur-row">
+          <span class="blur-lbl">Nenhum</span>
+          <input type="range" id="blur-slider" min="0" max="20" value="6" step="1" />
+          <span class="blur-lbl">Máximo</span>
+          <span class="blur-val" id="blur-val">6px</span>
+        </div>
+
+        <div class="field-label mt">SELECIONAR FUNDO</div>
+        <p class="hint">Clique para selecionar o fundo da capa.</p>
+        <div class="bg-grid" id="bg-grid"></div>
+      </div>
+
+      <!-- AÇÕES -->
+      <div class="actions">
+        <button class="act-btn green" id="btn-dl">⬇ Baixar capa (PNG)</button>
+      </div>
+      <p class="hint center">O link .png é gerado e copiado para a área de transferência.</p>
+    </div>
+
+    <!-- ── PREVIEW ── -->
+    <div class="preview-area">
+      <div class="preview-wrap">
+        <canvas id="cv" width="400" height="400"></canvas>
+      </div>
+      <p class="preview-lbl">Preview da sua capa</p>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
