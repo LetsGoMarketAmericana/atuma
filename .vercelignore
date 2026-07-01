@@ -1,10 +1,7 @@
-INICIAR.bat
-cut_backgrounds.py
-deploy/
-font_extracted/
-.vscode/
-*.zip
-emotes_grid_preview.png
-emotes_preview.png
-Mobile - Stumble Guys - Miscellaneous - Emotes.png
-Mobile - Stumble Guys - Miscellaneous - Map Banners.png
+{
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
