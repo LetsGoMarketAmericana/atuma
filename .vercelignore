@@ -1,6 +1,5 @@
 INICIAR.bat
 cut_backgrounds.py
-server.js
 deploy/
 font_extracted/
 .vscode/
